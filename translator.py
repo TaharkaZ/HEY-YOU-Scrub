@@ -23,16 +23,28 @@ def executeCommand(voiceClip):
     if(voiceClip == "hello"):
         print("senpai notice me")      
         gamepad.press_button(button=vg.XUSB_BUTTON. XUSB_GAMEPAD_DPAD_DOWN)  # press the dpad down button
-        zawurdo.sleep(5)
-        gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_DOWN)
+        gamepad.update()  # send the updated state to the computer
+        zawurdo.sleep(0.017)
         
-        gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_RIGHT)  # press the dpad left button
-        gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_X)  # press the X button
+        gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_RIGHT)
+        gamepad.update()
+        zawurdo.sleep(0.017)
 
-        zawurdo.sleep(5)
+        gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_DOWN)  # press the dpad left button
+        gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_X)  # press the X button
+        gamepad.update()  # send the updated state to the computer
+        zawurdo.sleep(0.017)
+
         gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_RIGHT)
         gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_X)
         gamepad.update()  # send the updated state to the computer
+
+    if(voiceClip == "start"):
+        gamepad.press_button(button=vg.XUSB_BUTTON. XUSB_GAMEPAD_START)
+        gamepad.update()
+        zawurdo.sleep(0.017)
+        gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_START)
+        gamepad.update()
 
 
 def voiceRecognition():
